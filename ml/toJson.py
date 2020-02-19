@@ -1,9 +1,23 @@
+import extractTweets
 
-import re, string, unicodedata
-def remove_URL():
-    """Remove URLs from a sample string"""
-    return re.sub(r"http\S+", "", sample)
+def Json():
+    count =0
+    info = extractTweets.tweets()
 
+    tweet = []
+    for x in info:
+        id = str(count)
+        each ={
+            "id":id,
+            "language": "en",
+            "text":x
+        }
+        count +=1
+        tweet.append(each)
 
-if __name__ == "__main__":
-    print(1)
+    document = {
+        "documents": tweet
+    }
+
+    return document
+
